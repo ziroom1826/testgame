@@ -66,30 +66,31 @@ class GameScene: SKScene, SKPhysicsContactDelegate, ProtocolMainScene {
         wormLabel.position = CGPointMake(400, self.frame.size.height-150)
         wormLabel.text = "worm: \(wormNum) "
         self.addChild(wormLabel)
-        
-        moving = SKNode()
-        self.addChild(moving)
-        pipes = SKNode()
-        moving.addChild(pipes)
-        moving.speed = 3
-        // create the pipes textures
-        pipeTextureUp = SKTexture(imageNamed: "pipe_up")
-        pipeTextureUp.filteringMode = .Nearest
-        pipeTextureDown = SKTexture(imageNamed: "pipe_down")
-        pipeTextureDown.filteringMode = .Nearest
-        
-        // create the pipes movement actions
-        let distanceToMove = CGFloat(self.frame.size.width + 2.0 * pipeTextureUp.size().width)
-        let movePipes = SKAction.moveByX(-distanceToMove, y:0.0, duration:NSTimeInterval(0.01 * distanceToMove))
-        let removePipes = SKAction.removeFromParent()
-        movePipesAndRemove = SKAction.sequence([movePipes, removePipes])
-        
-        // spawn the pipes
-        let spawn = SKAction.runBlock({() in self.spawnPipes()})
-        let delay = SKAction.waitForDuration(NSTimeInterval(2.0))
-        let spawnThenDelay = SKAction.sequence([spawn, delay])
-        let spawnThenDelayForever = SKAction.repeatActionForever(spawnThenDelay)
-        self.runAction(spawnThenDelayForever)
+
+//        moving = SKNode()
+//        self.addChild(moving)
+//        pipes = SKNode()
+//        moving.addChild(pipes)
+//        moving.speed = 3
+//        // create the pipes textures
+//        pipeTextureUp = SKTexture(imageNamed: "pipe_up")
+//        pipeTextureUp.filteringMode = .Nearest
+//        pipeTextureDown = SKTexture(imageNamed: "pipe_down")
+//        pipeTextureDown.filteringMode = .Nearest
+//        
+//        // create the pipes movement actions
+//        let distanceToMove = CGFloat(self.frame.size.width + 2.0 * pipeTextureUp.size().width)
+//        let movePipes = SKAction.moveByX(-distanceToMove, y:0.0, duration:NSTimeInterval(0.01 * distanceToMove))
+//        let removePipes = SKAction.removeFromParent()
+//        movePipesAndRemove = SKAction.sequence([movePipes, removePipes])
+//        
+//        // spawn the pipes
+//        let spawn = SKAction.runBlock({() in self.spawnPipes()})
+//        let delay = SKAction.waitForDuration(NSTimeInterval(2.0))
+//        let spawnThenDelay = SKAction.sequence([spawn, delay])
+//        let spawnThenDelayForever = SKAction.repeatActionForever(spawnThenDelay)
+//        self.runAction(spawnThenDelayForever)
+
     }
     
     // 点击屏幕
