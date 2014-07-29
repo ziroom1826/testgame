@@ -98,6 +98,8 @@ class Platform: SKNode {
         var platformSprite = SKSpriteNode()// = SKSpriteNode(texture:textPlatform)
         var isPipe = arc4random() % 2
         println("the next random is \(isPipe)")
+        
+        /*
         if isFirst {
             platformSprite = SKSpriteNode(texture:textPlatform)
             theScale = 2.3
@@ -129,6 +131,7 @@ class Platform: SKNode {
             
 
             platformSprite = SKSpriteNode(texture:pipeTextureUp)
+            platformSprite.setScale(2.0)
             
             theY = CGFloat(arc4random() % 200 + 200)
             theX = CGFloat(self.sceneWidth) + platformSprite.size.width / 2 + self.gap
@@ -154,6 +157,34 @@ class Platform: SKNode {
             if platformSprite == nil {
                 println("platformSprite is nil")
             }
+        }
+        */
+        
+        if isFirst {
+            platformSprite = SKSpriteNode(texture:textPlatform)
+            theScale = 2.3
+            platformSprite.xScale = theScale
+            theY = 250.0
+            theX = platformSprite.size.width / 2
+            platformSprite.position = CGPoint(x:theX, y:theY)
+            lastDistance = CGFloat(platformSprite.size.width) - sceneWidth
+            isFirst = false
+        } else {
+            //creat pip platform
+            pipeTextureUp = SKTexture(imageNamed: "pipe_up")
+            pipeTextureUp.filteringMode = .Nearest
+            pipeTextureDown = SKTexture(imageNamed: "pipe_down")
+            pipeTextureDown.filteringMode = .Nearest
+            
+            
+            platformSprite = SKSpriteNode(texture:pipeTextureUp)
+            platformSprite.setScale(2.0)
+            
+            theY = CGFloat(arc4random() % 200 + 200)
+            theX = CGFloat(self.sceneWidth) + platformSprite.size.width / 2 + self.gap
+            platformSprite.position = CGPoint(x:theX, y:theY)
+            
+            lastDistance = CGFloat(platformSprite.size.width + self.gap)
         }
 
         platformSprite.physicsBody = SKPhysicsBody(rectangleOfSize:CGSizeMake(platformSprite.size.width, platformSprite.size.height))
